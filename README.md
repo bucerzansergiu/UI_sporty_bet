@@ -1,2 +1,2 @@
-# UI_sporty_bet
+# UI Sporty bet
 A Selenium based framework written in Python
