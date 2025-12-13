@@ -1,0 +1,37 @@
+#!/bin/bash
+# Quick Start Script for Twitch Mobile Automation Framework
+
+echo "🚀 Twitch Mobile Automation Framework"
+echo "======================================"
+echo ""
+
+# Check if virtual environment exists
+if [ ! -d ".venv" ]; then
+    echo "Creating virtual environment..."
+    python3 -m venv .venv
+fi
+
+# Activate virtual environment
+echo "Activating virtual environment..."
+source .venv/bin/activate
+
+# Install dependencies
+echo "Installing dependencies..."
+pip install -r requirements.txt
+
+# Create screenshots directory
+if [ ! -d "screenshots" ]; then
+    mkdir screenshots
+    echo "Created screenshots directory"
+fi
+
+echo ""
+echo "✅ Setup complete!"
+echo ""
+echo "📖 Available commands:"
+echo "  • Run test:           pytest tests/test_twitch_mobile.py -v -s"
+echo "  • Run with report:    pytest tests/test_twitch_mobile.py -v -s --html=report.html --self-contained-html"
+echo "  • Run all tests:      pytest -v -s"
+echo ""
+echo "🎯 Ready to run tests!"
+
