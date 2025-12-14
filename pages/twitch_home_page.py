@@ -22,7 +22,7 @@ class TwitchHomePage(BasePage):
     def open(self):
         """Open Twitch mobile home page."""
         self.navigate_to(self.url)
-        time.sleep(2)  # Wait for page to load
+        self.wait_for_page_load()  # Wait for page to load
         self.handle_cookie_consent()
 
     def handle_cookie_consent(self):
@@ -34,7 +34,7 @@ class TwitchHomePage(BasePage):
             )
             accept_button.click()
             print("Cookie consent accepted")
-            time.sleep(1)  # Wait for popup to disappear
+            self.wait_for_page_load()
         except Exception as e:
             print("No cookie consent popup found or already accepted")
 
@@ -42,6 +42,6 @@ class TwitchHomePage(BasePage):
         """Navigate directly to the directory page."""
         log.info("Navigating to directory page...")
         self.navigate_to(self.directory_url)
-        time.sleep(3)  # Wait for directory page to load
+        self.wait_for_page_load()  # Wait for directory page to load
         log.info("Directory page loaded")
 

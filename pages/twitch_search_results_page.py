@@ -23,18 +23,18 @@ class TwitchSearchResultsPage(BasePage):
         search_input = self.find_element(*self.SEARCH_INPUT)
         search_input.send_keys(game_name)
         search_input.send_keys(Keys.RETURN)
-        time.sleep(3)
+        self.wait_for_page_load()
 
     def scroll_down_twice(self):
         """Scroll down two times."""
         self.scroll_down(400)
-        time.sleep(1)
+
         self.scroll_down(400)
         time.sleep(1)
 
     def select_random_streamer(self):
         """Select a random streamer from search results."""
-        time.sleep(2)
+        self.wait_for_page_load()
 
         streamers = self.find_elements(*self.STREAMER_LINKS)
 
@@ -55,9 +55,5 @@ class TwitchSearchResultsPage(BasePage):
 
         # Click it
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", random_streamer)
-        time.sleep(1)
+        self.wait_for_page_load()
         self.driver.execute_script("arguments[0].click();", random_streamer)
-        time.sleep(2)
-
-
-

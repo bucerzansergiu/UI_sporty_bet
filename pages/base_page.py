@@ -48,7 +48,7 @@ class BasePage:
         self.driver.execute_script(f"window.scrollBy(0, {pixels});")
         time.sleep(1)  # Wait for content to load after scroll
 
-    def wait_for_page_load(self, timeout=10):
+    def wait_for_page_load(self, timeout=2):
         """Wait for page to be fully loaded."""
         time.sleep(timeout)
 
