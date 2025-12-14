@@ -15,9 +15,16 @@ class TestTwitchMobile:
         Test that navigates to Twitch mobile, searches for Starcraft II,
         scrolls down twice, selects a random streamer, and takes a screenshot.
         """
+        screenshot_path = "screenshots/twitch_streamer.png"
+
         # Create screenshots directory if it doesn't exist
         if not os.path.exists("screenshots"):
             os.makedirs("screenshots")
+
+        # Delete old screenshot to ensure test validation is accurate
+        if os.path.exists(screenshot_path):
+            os.remove(screenshot_path)
+            log.info(f"Cleaned up old screenshot: {screenshot_path}")
 
         # Initialize page objects
         home_page = TwitchHomePage(driver)
@@ -43,7 +50,10 @@ class TestTwitchMobile:
         streamer_page.wait_for_page_to_load()
 
         log.info("Step 7: Taking screenshot...")
-        streamer_page.take_page_screenshot("screenshots/twitch_streamer.png")
+        streamer_page.take_page_screenshot(screenshot_path)
+        assert os.path.exists(screenshot_path), "Screenshot was not created"
+        assert os.path.getsize(screenshot_path) > 0, "Screenshot file is empty"
+        log.info(f"Screenshot saved successfully: {screenshot_path}")
 
         log.info("Test completed successfully!")
 

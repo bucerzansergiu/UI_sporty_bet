@@ -33,7 +33,7 @@ class TwitchHomePage(BasePage):
                 EC.element_to_be_clickable(self.COOKIE_ACCEPT_BUTTON)
             )
             accept_button.click()
-            print("✓ Cookie consent accepted")
+            print("Cookie consent accepted")
             time.sleep(1)  # Wait for popup to disappear
         except Exception as e:
             print("No cookie consent popup found or already accepted")
@@ -43,5 +43,5 @@ class TwitchHomePage(BasePage):
         log.info("Navigating to directory page...")
         self.navigate_to(self.directory_url)
         time.sleep(3)  # Wait for directory page to load
-        log.info("✓ Directory page loaded")
+        log.info("Directory page loaded")
 
